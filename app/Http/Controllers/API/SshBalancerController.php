@@ -10,7 +10,8 @@ class SshBalancerController extends Controller
     /**
      * Get all of the balancers for the given project.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function index(Request $request)

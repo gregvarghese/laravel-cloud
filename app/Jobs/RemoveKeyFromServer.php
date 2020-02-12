@@ -39,8 +39,9 @@ class RemoveKeyFromServer implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\User  $user
-     * @param  \App\Contracts\Provisionable  $provisionable
+     * @param \App\User                    $user
+     * @param \App\Contracts\Provisionable $provisionable
+     *
      * @return void
      */
     public function __construct(User $user, Provisionable $provisionable)

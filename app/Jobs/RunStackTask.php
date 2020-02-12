@@ -23,7 +23,8 @@ class RunStackTask implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\StackTask  $task
+     * @param \App\StackTask $task
+     *
      * @return void
      */
     public function __construct(StackTask $task)

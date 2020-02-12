@@ -31,7 +31,8 @@ class WaitForDnsRecordToPropagate implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Stack  $stack
+     * @param \App\Stack $stack
+     *
      * @return void
      */
     public function __construct(Stack $stack)
@@ -42,7 +43,8 @@ class WaitForDnsRecordToPropagate implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param  \App\Contracts\DnsProvider  $dns
+     * @param \App\Contracts\DnsProvider $dns
+     *
      * @return void
      */
     public function handle(DnsProvider $dns)

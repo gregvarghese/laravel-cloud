@@ -24,8 +24,9 @@ class ValidServeList implements Rule
     /**
      * Create a new rule instance.
      *
-     * @param  \App\Project  $project
-     * @param  string  $exceptEnvironment
+     * @param \App\Project $project
+     * @param string       $exceptEnvironment
+     *
      * @return void
      */
     public function __construct($project, $exceptEnvironment = null)
@@ -37,8 +38,9 @@ class ValidServeList implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)

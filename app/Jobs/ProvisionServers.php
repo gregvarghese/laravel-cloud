@@ -23,7 +23,8 @@ class ProvisionServers implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Stack  $stack
+     * @param \App\Stack $stack
+     *
      * @return void
      */
     public function __construct(Stack $stack)
@@ -58,7 +59,8 @@ class ProvisionServers implements ShouldQueue
     /**
      * Create a server on the server provider.
      *
-     * @param  \App\Contracts\Provisionable  $server
+     * @param \App\Contracts\Provisionable $server
+     *
      * @return string
      */
     protected function createServer($server)

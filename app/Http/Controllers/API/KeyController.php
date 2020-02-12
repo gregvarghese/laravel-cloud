@@ -13,7 +13,8 @@ class KeyController extends Controller
     /**
      * Add the user's SSH key to the given server.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -40,7 +41,8 @@ class KeyController extends Controller
     /**
      * Get the addressable instance for the request.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return mixed
      */
     protected function addressable(Request $request)

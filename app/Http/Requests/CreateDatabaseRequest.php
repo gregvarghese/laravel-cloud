@@ -32,7 +32,8 @@ class CreateDatabaseRequest extends FormRequest
     /**
      * Validate the size of the server.
      *
-     * @param  \Illuminate\Validator\Validator  $validator
+     * @param \Illuminate\Validator\Validator $validator
+     *
      * @return \Illuminate\Validator\Validator
      */
     protected function validateRegionAndSize($validator)

@@ -33,8 +33,9 @@ class UpdateStackDnsRecords implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Project  $project
-     * @param  string|null  $ipAddress
+     * @param \App\Project $project
+     * @param string|null  $ipAddress
+     *
      * @return void
      */
     public function __construct(Project $project, $ipAddress = null)
@@ -46,7 +47,8 @@ class UpdateStackDnsRecords implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param  \App\Contracts\DnsProvider  $dns
+     * @param \App\Contracts\DnsProvider $dns
+     *
      * @return void
      */
     public function handle(DnsProvider $dns)

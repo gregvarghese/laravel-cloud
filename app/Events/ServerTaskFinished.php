@@ -21,7 +21,8 @@ class ServerTaskFinished
     /**
      * Create a new event instance.
      *
-     * @param  \App\ServerTask  $task
+     * @param \App\ServerTask $task
+     *
      * @return void
      */
     public function __construct(ServerTask $task)

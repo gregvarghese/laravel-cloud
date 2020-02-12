@@ -12,7 +12,8 @@ class SourceProviderController extends Controller
     /**
      * Get all of the source control providers for the current user.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function index(Request $request)
@@ -23,7 +24,8 @@ class SourceProviderController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return mixed
      */
     public function store(Request $request)
@@ -54,8 +56,9 @@ class SourceProviderController extends Controller
     /**
      * Delete the given source control provider.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SourceProvider  $provider
+     * @param \Illuminate\Http\Request $request
+     * @param \App\SourceProvider      $provider
+     *
      * @return Response
      */
     public function destroy(Request $request, SourceProvider $provider)
@@ -64,7 +67,7 @@ class SourceProviderController extends Controller
 
         if (count($provider->projects) > 0) {
             throw ValidationException::withMessages(['balancer' => [
-                'This source control provider is being used by active projects.'
+                'This source control provider is being used by active projects.',
             ]]);
         }
 

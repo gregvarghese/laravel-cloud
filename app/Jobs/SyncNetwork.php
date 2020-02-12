@@ -38,7 +38,8 @@ class SyncNetwork implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Database  $database
+     * @param \App\Database $database
+     *
      * @return void
      */
     public function __construct(Database $database)
@@ -70,7 +71,8 @@ class SyncNetwork implements ShouldQueue
     /**
      * Run the sync script for the given database and IP addresses.
      *
-     * @param  \App\Database  $database
+     * @param \App\Database $database
+     *
      * @return \App\Task
      */
     protected function sync(Database $database)

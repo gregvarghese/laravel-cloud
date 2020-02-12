@@ -13,8 +13,9 @@ class DatabaseRestorePolicy
     /**
      * Determine whether the user can restore databases.
      *
-     * @param  \App\User  $user
-     * @param  \App\Database  $database
+     * @param \App\User     $user
+     * @param \App\Database $database
+     *
      * @return mixed
      */
     public function create(User $user, Database $database)

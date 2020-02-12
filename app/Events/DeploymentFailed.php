@@ -24,8 +24,9 @@ class DeploymentFailed implements Alertable, HasStack
     /**
      * Create a new event instance.
      *
-     * @param  \App\Deployment  $deployment
-     * @param  \Exception|null  $exception
+     * @param \App\Deployment $deployment
+     * @param \Exception|null $exception
+     *
      * @return void
      */
     public function __construct(Deployment $deployment, $exception = null)
@@ -52,11 +53,11 @@ class DeploymentFailed implements Alertable, HasStack
     public function toAlert()
     {
         return $this->deployment->project()->alerts()->create([
-            'stack_id' => $this->deployment->stack->id,
-            'type' => 'DeploymentFailed',
+            'stack_id'  => $this->deployment->stack->id,
+            'type'      => 'DeploymentFailed',
             'exception' => (string) ($this->exception ?? ''),
-            'meta' => [
-                'deployment_id' => $this->deployment->id
+            'meta'      => [
+                'deployment_id' => $this->deployment->id,
             ],
         ]);
     }

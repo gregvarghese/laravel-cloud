@@ -14,7 +14,8 @@ class StackController extends Controller
     /**
      * Get all of the stacks for the project.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function index(Request $request)
@@ -30,7 +31,8 @@ class StackController extends Controller
     /**
      * Provision a stack.
      *
-     * @param  ProvisionStackRequest  $request
+     * @param ProvisionStackRequest $request
+     *
      * @return mixed
      */
     public function store(ProvisionStackRequest $request)
@@ -45,7 +47,8 @@ class StackController extends Controller
     /**
      * Delete the given stack.
      *
-     * @param  \App\Stack  $stack
+     * @param \App\Stack $stack
+     *
      * @return Response
      */
     public function destroy(Stack $stack)

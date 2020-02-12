@@ -23,7 +23,8 @@ class DeploymentBuilding
     /**
      * Create a new event instance.
      *
-     * @param  \App\Deployment  $deployment
+     * @param \App\Deployment $deployment
+     *
      * @return void
      */
     public function __construct(Deployment $deployment)

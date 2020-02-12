@@ -82,7 +82,7 @@ class ServerTask extends Model
         ]);
 
         $this->update([
-            'status' => 'running',
+            'status'  => 'running',
             'task_id' => $task->id,
         ]);
     }

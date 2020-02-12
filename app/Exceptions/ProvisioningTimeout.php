@@ -10,7 +10,8 @@ class ProvisioningTimeout extends Exception
     /**
      * Create a new exception for a provisionable server.
      *
-     * @param  Provisionable  $provisionable
+     * @param Provisionable $provisionable
+     *
      * @return static
      */
     public static function for(Provisionable $provisionable)

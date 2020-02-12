@@ -62,8 +62,9 @@ class Environment extends Model
     /**
      * Promote the given stack so that it serves production URLs.
      *
-     * @param  \App\Stack  $stack
-     * @param  array  $options
+     * @param \App\Stack $stack
+     * @param array      $options
+     *
      * @return bool
      */
     public function promote(Stack $stack, array $options = [])
@@ -80,7 +81,8 @@ class Environment extends Model
     /**
      * Mark the given stack as promoted.
      *
-     * @param  \App\Stack  $stack
+     * @param \App\Stack $stack
+     *
      * @return void
      */
     public function markAsPromoted(Stack $stack)

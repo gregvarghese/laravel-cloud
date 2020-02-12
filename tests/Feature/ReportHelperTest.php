@@ -8,10 +8,9 @@ use Tests\TestCase;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class FeatureHelperTest extends TestCase
+class ReportHelperTest extends TestCase
 {
     use RefreshDatabase;
-
 
     public function setUp()
     {
@@ -20,10 +19,9 @@ class FeatureHelperTest extends TestCase
         $this->withoutExceptionHandling();
     }
 
-
     public function test_helper_reports_exceptions()
     {
-        $e = new Exception;
+        $e = new Exception();
         $mock = Mockery::mock();
         $mock->shouldReceive('report')->once()->with($e);
         $this->swap(ExceptionHandler::class, $mock);

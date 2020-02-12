@@ -7,8 +7,8 @@ use App\Jobs\SyncBalancer;
 use App\Callbacks\Dispatch;
 use App\Jobs\ProvisionBalancer;
 use App\Jobs\UpdateStackDnsRecords;
-use App\Jobs\DeleteServerOnProvider;
 use App\Callbacks\MarkAsProvisioned;
+use App\Jobs\DeleteServerOnProvider;
 use Illuminate\Database\Eloquent\Model;
 use App\Scripts\SyncBalancer as SyncBalancerScript;
 use App\Contracts\Provisionable as ProvisionableContract;
@@ -45,7 +45,8 @@ class Balancer extends Model implements ProvisionableContract
     /**
      * Determine if the given user can SSH into the balancer.
      *
-     * @param  \App\User  $user
+     * @param \App\User $user
+     *
      * @return bool
      */
     public function canSsh(User $user)
@@ -56,7 +57,8 @@ class Balancer extends Model implements ProvisionableContract
     /**
      * Sync the balancer's configuration with the current stacks.
      *
-     * @param  int  $delay
+     * @param int $delay
+     *
      * @return void
      */
     public function sync($delay = 0)
@@ -112,7 +114,7 @@ class Balancer extends Model implements ProvisionableContract
         return $this->runInBackground(new Scripts\ProvisionBalancer($this), [
             'then' => [
                 MarkAsProvisioned::class,
-                new Dispatch(SyncBalancer::class)
+                new Dispatch(SyncBalancer::class),
             ],
         ]);
     }
@@ -120,9 +122,9 @@ class Balancer extends Model implements ProvisionableContract
     /**
      * Delete the model from the database.
      *
-     * @return bool|null
-     *
      * @throws \Exception
+     *
+     * @return bool|null
      */
     public function delete()
     {

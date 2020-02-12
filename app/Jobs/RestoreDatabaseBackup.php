@@ -25,7 +25,8 @@ class RestoreDatabaseBackup implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\DatabaseRestore  $restore
+     * @param \App\DatabaseRestore $restore
+     *
      * @return void
      */
     public function __construct(DatabaseRestore $restore)

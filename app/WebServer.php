@@ -11,7 +11,8 @@ class WebServer extends HttpServer
     /**
      * Determine if this server will run a given deployment command.
      *
-     * @param  string  $command
+     * @param string $command
+     *
      * @return bool
      */
     public function runsCommand($command)

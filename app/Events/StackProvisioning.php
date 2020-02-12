@@ -23,7 +23,8 @@ class StackProvisioning
     /**
      * Create a new event instance.
      *
-     * @param  Stack  $stack
+     * @param Stack $stack
+     *
      * @return void
      */
     public function __construct(Stack $stack)

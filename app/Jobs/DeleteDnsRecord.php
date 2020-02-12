@@ -30,8 +30,9 @@ class DeleteDnsRecord implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  string  $name
-     * @param  string  $ipAddress
+     * @param string $name
+     * @param string $ipAddress
+     *
      * @return void
      */
     public function __construct($name, $ipAddress)
@@ -43,7 +44,8 @@ class DeleteDnsRecord implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param  \App\Contracts\DnsProvider  $dns
+     * @param \App\Contracts\DnsProvider $dns
+     *
      * @return void
      */
     public function handle(DnsProvider $dns)

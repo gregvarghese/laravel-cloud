@@ -20,7 +20,8 @@ class AlertCreated
     /**
      * Create a new event instance.
      *
-     * @param  \App\Alert  $alert
+     * @param \App\Alert $alert
+     *
      * @return void
      */
     public function __construct(Alert $alert)

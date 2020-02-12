@@ -17,14 +17,12 @@ class RestoreDatabaseBackupJobTest extends TestCase
 {
     use RefreshDatabase;
 
-
     public function setUp()
     {
         parent::setUp();
 
         $this->withoutExceptionHandling();
     }
-
 
     public function test_script_is_started()
     {
@@ -37,7 +35,7 @@ class RestoreDatabaseBackupJobTest extends TestCase
                 return $options['then'][0] instanceof CheckDatabaseRestore &&
                        $options['then'][0]->id === $restore->id;
             })
-        )->andReturn($task = new FakeTask);
+        )->andReturn($task = new FakeTask());
 
         $job->handle();
 

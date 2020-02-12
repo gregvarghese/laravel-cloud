@@ -13,8 +13,9 @@ class PromotedStackController extends Controller
     /**
      * Get the promoted stack for the environment.
      *
-     * @param  Request  $request
-     * @param  \App\Environment  $environment
+     * @param Request          $request
+     * @param \App\Environment $environment
+     *
      * @return mixed
      */
     public function show(Request $request, Environment $environment)
@@ -31,8 +32,9 @@ class PromotedStackController extends Controller
     /**
      * Set the promoted stack for the environment.
      *
-     * @param  Request  $request
-     * @param  \App\Environment  $environment
+     * @param Request          $request
+     * @param \App\Environment $environment
+     *
      * @return mixed
      */
     public function update(Request $request, Environment $environment)
@@ -40,10 +42,10 @@ class PromotedStackController extends Controller
         $request->validate([
             'stack' => [
                 'required',
-                new StackIsPromotable($stack = Stack::findOrFail($request->stack))
+                new StackIsPromotable($stack = Stack::findOrFail($request->stack)),
             ],
             'hooks' => 'nullable|boolean',
-            'wait' => 'nullable|boolean',
+            'wait'  => 'nullable|boolean',
         ]);
 
         $this->authorize('view', $stack);
@@ -56,7 +58,7 @@ class PromotedStackController extends Controller
 
         $environment->promote($stack, [
             'hooks' => (bool) $request->hooks,
-            'wait' => (bool) $request->wait,
+            'wait'  => (bool) $request->wait,
         ]);
     }
 }

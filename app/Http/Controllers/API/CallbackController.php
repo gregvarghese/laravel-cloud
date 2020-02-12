@@ -13,8 +13,9 @@ class CallbackController extends Controller
     /**
      * Handle the callback for a task.
      *
-     * @param  Request  $request
-     * @param  string  $hashid
+     * @param Request $request
+     * @param string  $hashid
+     *
      * @return Response
      */
     public function handle(Request $request, $hashid)

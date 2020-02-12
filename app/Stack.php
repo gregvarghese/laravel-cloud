@@ -24,11 +24,11 @@ class Stack extends Model
      * @var array
      */
     protected $casts = [
-        'balanced' => 'boolean',
-        'meta' => 'json',
+        'balanced'           => 'boolean',
+        'meta'               => 'json',
         'pending_deployment' => 'json',
-        'promoted' => 'boolean',
-        'under_maintenance' => 'boolean',
+        'promoted'           => 'boolean',
+        'under_maintenance'  => 'boolean',
     ];
 
     /**
@@ -271,16 +271,17 @@ class Stack extends Model
     /**
      * Run a new task on the stack.
      *
-     * @param  string  $name
-     * @param  string  $user
-     * @param  array  $commands
+     * @param string $name
+     * @param string $user
+     * @param array  $commands
+     *
      * @return \App\StackTask
      */
     public function dispatchTask($name, $user, array $commands)
     {
         return tap($this->tasks()->create([
-            'name' => $name,
-            'user' => $user,
+            'name'     => $name,
+            'user'     => $user,
             'commands' => $commands,
         ]), function ($task) {
             $task->dispatch();
@@ -405,7 +406,8 @@ class Stack extends Model
     /**
      * Determine if the given domain is the canonical domain.
      *
-     * @param  string  $domain
+     * @param string $domain
+     *
      * @return bool
      */
     public function isCanonicalDomain($domain)
@@ -418,7 +420,8 @@ class Stack extends Model
     /**
      * Determine the canonical domain for the given domain.
      *
-     * @param  string  $domain
+     * @param string $domain
+     *
      * @return string
      */
     public function canonicalDomain($domain)
@@ -444,7 +447,8 @@ class Stack extends Model
     /**
      * Get the reverse of the given domain's canonical domain.
      *
-     * @param  string  $domain
+     * @param string $domain
+     *
      * @return string
      */
     public function nonCanonicalDomain($domain)
@@ -493,7 +497,8 @@ class Stack extends Model
     /**
      * Deploy fresh code using the deployment instructions.
      *
-     * @param  \App\DeploymentInstructions  $instructions
+     * @param \App\DeploymentInstructions $instructions
+     *
      * @return \App\Deployment
      */
     public function deployUsing(DeploymentInstructions $instructions)
@@ -509,13 +514,14 @@ class Stack extends Model
     /**
      * Deploy fresh code to the stack.
      *
-     * @param  string  $hash
-     * @param  array  $build
-     * @param  array  $activate
-     * @param  string  $hash
-     * @param  array  $directories
-     * @param  array  $daemons
-     * @param  array  $schedule
+     * @param string $hash
+     * @param array  $build
+     * @param array  $activate
+     * @param string $hash
+     * @param array  $directories
+     * @param array  $daemons
+     * @param array  $schedule
+     *
      * @return \App\Deployment
      */
     public function deploy($hash, array $build = [], array $activate = [],
@@ -526,7 +532,7 @@ class Stack extends Model
         // provisioned or we cannot obtain a lock, we will return out since we are not
         // able to safely deploy to the stack. Otherwise, we can keep on going here.
         if ($this->isDeploying() || ! $this->deploymentLock()->get()) {
-            throw new AlreadyDeployingException;
+            throw new AlreadyDeployingException();
         }
 
         $this->markAsDeploying();
@@ -547,12 +553,13 @@ class Stack extends Model
     /**
      * Deploy the given branch to the stack.
      *
-     * @param  string  $branch
-     * @param  array  $build
-     * @param  array  $activate
-     * @param  array  $directories
-     * @param  array  $daemons
-     * @param  array  $schedule
+     * @param string $branch
+     * @param array  $build
+     * @param array  $activate
+     * @param array  $directories
+     * @param array  $daemons
+     * @param array  $schedule
+     *
      * @return \App\Deployment
      */
     public function deployBranch($branch, array $build = [], array $activate = [],
@@ -566,19 +573,20 @@ class Stack extends Model
         return tap($this->deploy(
             $hash, $build, $activate, $directories, $daemons, $schedule
         ))->update([
-            'branch' => $branch
+            'branch' => $branch,
         ]);
     }
 
     /**
      * Deploy the given hash to the stack.
      *
-     * @param  string  $hash
-     * @param  array  $build
-     * @param  array  $activate
-     * @param  array  $directories
-     * @param  array  $daemons
-     * @param  array  $schedule
+     * @param string $hash
+     * @param array  $build
+     * @param array  $activate
+     * @param array  $directories
+     * @param array  $daemons
+     * @param array  $schedule
+     *
      * @return \App\Deployment
      */
     public function deployHash($hash, array $build = [], array $activate = [],
@@ -598,7 +606,7 @@ class Stack extends Model
     public function markAsDeploying()
     {
         $this->update([
-            'deployment_status' => 'deploying',
+            'deployment_status'     => 'deploying',
             'deployment_started_at' => Carbon::now(),
         ]);
     }
@@ -606,12 +614,13 @@ class Stack extends Model
     /**
      * Create a new deployment record for the stack.
      *
-     * @param  string  $hash
-     * @param  array  $build
-     * @param  array  $activate
-     * @param  array  $directories
-     * @param  array  $daemons
-     * @param  array  $schedule
+     * @param string $hash
+     * @param array  $build
+     * @param array  $activate
+     * @param array  $directories
+     * @param array  $daemons
+     * @param array  $schedule
+     *
      * @return \App\Deployment
      */
     protected function createDeployment($hash, array $build = [], array $activate = [],
@@ -619,15 +628,15 @@ class Stack extends Model
                                         array $schedule = [])
     {
         return tap($this->deployments()->create([
-            'commit_hash' => $hash,
-            'build_commands' => $build,
+            'commit_hash'         => $hash,
+            'build_commands'      => $build,
             'activation_commands' => $activate,
-            'directories' => collect($directories)->map(function ($directory) {
+            'directories'         => collect($directories)->map(function ($directory) {
                 return trim($directory, '/');
             })->all(),
-            'daemons' => $daemons,
+            'daemons'  => $daemons,
             'schedule' => $schedule,
-            'status' => 'pending',
+            'status'   => 'pending',
         ]), function () {
             $this->trimDeployments();
         });
@@ -660,15 +669,16 @@ class Stack extends Model
     /**
      * Store the information for a pending deployment.
      *
-     * @param  \App\Hook  $hook
-     * @param  string  $hash
+     * @param \App\Hook $hook
+     * @param string    $hash
+     *
      * @return void
      */
     public function storePendingDeployment(Hook $hook, $hash)
     {
         $this->update([
             'pending_deployment' => [
-                'hook_id' => $hook->id,
+                'hook_id'     => $hook->id,
                 'commit_hash' => $hash,
             ],
         ]);
@@ -729,7 +739,7 @@ class Stack extends Model
         $this->deploymentLock()->release();
 
         $this->update([
-            'deployment_status' => null,
+            'deployment_status'     => null,
             'deployment_started_at' => null,
         ]);
     }
@@ -747,8 +757,9 @@ class Stack extends Model
     /**
      * Define the stack using the given definition.
      *
-     * @param  \App\Environment  $environment
-     * @param  \App\Contracts\StackDefinition  $definition
+     * @param \App\Environment               $environment
+     * @param \App\Contracts\StackDefinition $definition
+     *
      * @return $this
      */
     public static function createForEnvironment(Environment $environment,
@@ -757,19 +768,19 @@ class Stack extends Model
         $project = $definition->project();
 
         $stack = $environment->stacks()->create([
-            'creator_id' => $definition->creator()->id,
-            'name' => $definition['name'],
-            'url' => Haiku::withToken(),
+            'creator_id'         => $definition->creator()->id,
+            'name'               => $definition['name'],
+            'url'                => Haiku::withToken(),
             'pending_deployment' => [],
-            'meta' => [
-                'php' => '7.1',
-                'initial_branch' => $definition['branch'],
-                'initial_build_commands' => $definition['build'] ?? [],
+            'meta'               => [
+                'php'                         => '7.1',
+                'initial_branch'              => $definition['branch'],
+                'initial_build_commands'      => $definition['build'] ?? [],
                 'initial_activation_commands' => $definition['activate'] ?? [],
-                'initial_directories' => $definition['directories'] ?? [],
-                'initial_daemons' => $definition->daemons(),
-                'initial_schedule' => $definition->schedule(),
-                'scripts' => $definition->scripts(),
+                'initial_directories'         => $definition['directories'] ?? [],
+                'initial_daemons'             => $definition->daemons(),
+                'initial_schedule'            => $definition->schedule(),
+                'scripts'                     => $definition->scripts(),
             ],
         ]);
 
@@ -787,7 +798,8 @@ class Stack extends Model
     /**
      * Create the server records for the stack.
      *
-     * @param  \App\Contracts\StackDefinition  $definition
+     * @param \App\Contracts\StackDefinition $definition
+     *
      * @return $this
      */
     protected function createServerRecords(StackDefinition $definition)
@@ -821,7 +833,7 @@ class Stack extends Model
         }
 
         $this->update([
-            'status' => 'provisioning'
+            'status' => 'provisioning',
         ]);
 
         StackProvisioning::dispatch($this);
@@ -869,9 +881,9 @@ class Stack extends Model
     /**
      * Delete the model from the database.
      *
-     * @return bool|null
-     *
      * @throws \Exception
+     *
+     * @return bool|null
      */
     public function delete()
     {
@@ -909,7 +921,7 @@ class Stack extends Model
     public function toArray()
     {
         return array_merge(parent::toArray(), [
-            'entrypoint' => $this->entrypoint(),
+            'entrypoint'      => $this->entrypoint(),
             'last_deployment' => $this->lastDeployment(),
         ]);
     }

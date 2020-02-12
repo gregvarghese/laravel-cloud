@@ -27,7 +27,8 @@ class Activate implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\ServerDeployment  $deployment
+     * @param \App\ServerDeployment $deployment
+     *
      * @return void
      */
     public function __construct(ServerDeployment $deployment)
@@ -67,16 +68,17 @@ class Activate implements ShouldQueue
     /**
      * Handle a job failure.
      *
-     * @param  \Exception  $exception
+     * @param \Exception $exception
+     *
      * @return void
      */
     public function failed(Exception $exception)
     {
         $this->deployment->project()->alerts()->create([
-            'stack_id' => $this->deployment->stack()->id,
-            'type' => 'ActivationFailed',
+            'stack_id'  => $this->deployment->stack()->id,
+            'type'      => 'ActivationFailed',
             'exception' => (string) $exception,
-            'meta' => [],
+            'meta'      => [],
         ]);
     }
 }

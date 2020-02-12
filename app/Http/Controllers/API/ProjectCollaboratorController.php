@@ -64,7 +64,8 @@ class ProjectCollaboratorController extends Controller
     /**
      * Get the emails of all of the current collaborators.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return array
      */
     protected function emails(Request $request)

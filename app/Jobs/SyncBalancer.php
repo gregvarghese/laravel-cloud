@@ -30,7 +30,8 @@ class SyncBalancer implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  Balancer  $balancer
+     * @param Balancer $balancer
+     *
      * @return void
      */
     public function __construct(Balancer $balancer)

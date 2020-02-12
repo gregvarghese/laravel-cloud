@@ -11,7 +11,8 @@ class ServerProviderController extends Controller
     /**
      * Get all of the server providers for the current user.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function index(Request $request)
@@ -22,7 +23,8 @@ class ServerProviderController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return mixed
      */
     public function store(Request $request)

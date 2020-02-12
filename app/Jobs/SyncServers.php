@@ -23,7 +23,8 @@ class SyncServers implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Stack  $stack
+     * @param \App\Stack $stack
+     *
      * @return void
      */
     public function __construct(Stack $stack)

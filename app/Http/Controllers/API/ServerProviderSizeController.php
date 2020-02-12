@@ -11,8 +11,9 @@ class ServerProviderSizeController extends Controller
     /**
      * Get all of the regions for the given provider.
      *
-     * @param  Request  $request
-     * @param  \App\ServerProvider  $provider
+     * @param Request             $request
+     * @param \App\ServerProvider $provider
+     *
      * @return Response
      */
     public function index(Request $request, ServerProvider $provider)

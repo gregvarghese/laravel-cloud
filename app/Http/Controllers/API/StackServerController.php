@@ -10,7 +10,8 @@ class StackServerController extends Controller
     /**
      * Get all of the servers for the stack.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function index(Request $request)
@@ -22,8 +23,8 @@ class StackServerController extends Controller
         $stack->load('appServers.address', 'webServers.address', 'workerServers.address');
 
         return [
-            'app' => $stack->appServers->all(),
-            'web' => $stack->webServers->all(),
+            'app'    => $stack->appServers->all(),
+            'web'    => $stack->webServers->all(),
             'worker' => $stack->workerServers->all(),
         ];
     }

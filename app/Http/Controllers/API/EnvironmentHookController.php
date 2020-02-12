@@ -11,8 +11,9 @@ class EnvironmentHookController extends Controller
     /**
      * Get the hooks for the given environment.
      *
-     * @param  Request  $request
-     * @param  \App\Environment  $environment
+     * @param Request          $request
+     * @param \App\Environment $environment
+     *
      * @return Response
      */
     public function index(Request $request, Environment $environment)

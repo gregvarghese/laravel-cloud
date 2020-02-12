@@ -31,7 +31,8 @@ class MonitorDeployment implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Deployment  $deployment
+     * @param \App\Deployment $deployment
+     *
      * @return void
      */
     public function __construct(Deployment $deployment)
@@ -88,7 +89,8 @@ class MonitorDeployment implements ShouldQueue
     /**
      * Handle a job failure.
      *
-     * @param  \Exception  $exception
+     * @param \Exception $exception
+     *
      * @return void
      */
     public function failed(Exception $exception)

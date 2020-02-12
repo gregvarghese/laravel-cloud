@@ -7,9 +7,10 @@ class TaskFactory
     /**
      * Create a new task instance.
      *
-     * @param  \App\Contracts\Provisionable  $provisionable
-     * @param  \App\Scripts\Script  $script
-     * @param  array $options
+     * @param \App\Contracts\Provisionable $provisionable
+     * @param \App\Scripts\Script          $script
+     * @param array                        $options
+     *
      * @return \App\Task
      */
     public function createFromScript($provisionable, $script, array $options = [])
@@ -20,11 +21,11 @@ class TaskFactory
 
         return $provisionable->tasks()->create([
             'project_id' => $provisionable->projectId(),
-            'name' => $script->name(),
-            'user' => $script->sshAs,
-            'options' => $options,
-            'script' => (string) $script,
-            'output' => '',
+            'name'       => $script->name(),
+            'user'       => $script->sshAs,
+            'options'    => $options,
+            'script'     => (string) $script,
+            'output'     => '',
         ]);
     }
 }

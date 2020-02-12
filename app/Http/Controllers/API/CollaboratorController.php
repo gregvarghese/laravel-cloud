@@ -31,7 +31,8 @@ class CollaboratorController extends Controller
     /**
      * Remove a user from all of the user's owned projects.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function destroy(Request $request)

@@ -30,7 +30,8 @@ class TimeOutDeploymentIfStillRunning implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Deployment  $deployment
+     * @param \App\Deployment $deployment
+     *
      * @return void
      */
     public function __construct(Deployment $deployment)

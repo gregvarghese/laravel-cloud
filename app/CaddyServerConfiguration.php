@@ -23,8 +23,9 @@ class CaddyServerConfiguration
     /**
      * Create a new Caddy configuration instance.
      *
-     * @param  \App\Server  $server
-     * @param  string  $domain
+     * @param \App\Server $server
+     * @param string      $domain
+     *
      * @return void
      */
     public function __construct(Server $server, $domain)
@@ -42,10 +43,10 @@ class CaddyServerConfiguration
     {
         return view($this->script(), [
             'canonicalDomain' => $this->server->stack->canonicalDomain($this->domain),
-            'domain' => $this->domain,
-            'root' => $this->root(),
-            'tls' => $this->tls(),
-            'index' => ! Str::contains($this->domain, '.laravel.build'),
+            'domain'          => $this->domain,
+            'root'            => $this->root(),
+            'tls'             => $this->tls(),
+            'index'           => ! Str::contains($this->domain, '.laravel.build'),
         ])->render();
     }
 

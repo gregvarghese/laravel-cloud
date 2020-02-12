@@ -25,7 +25,8 @@ class StoreDatabaseBackup implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\DatabaseBackup  $backup
+     * @param \App\DatabaseBackup $backup
+     *
      * @return void
      */
     public function __construct(DatabaseBackup $backup)

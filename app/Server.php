@@ -2,10 +2,8 @@
 
 namespace App;
 
-use App\Jobs\StopScheduler;
-use App\Jobs\StartScheduler;
-use App\Jobs\DeleteServerOnProvider;
 use App\Callbacks\MarkAsProvisioned;
+use App\Jobs\DeleteServerOnProvider;
 use Illuminate\Database\Eloquent\Model;
 use App\Contracts\Provisionable as ProvisionableContract;
 
@@ -48,7 +46,8 @@ abstract class Server extends Model implements ProvisionableContract
     /**
      * Determine if this server will run a given deployment command.
      *
-     * @param  string  $command
+     * @param string $command
+     *
      * @return bool
      */
     abstract public function runsCommand($command);
@@ -135,7 +134,8 @@ abstract class Server extends Model implements ProvisionableContract
     /**
      * Determine if the given user can SSH into the server.
      *
-     * @param  \App\User  $user
+     * @param \App\User $user
+     *
      * @return bool
      */
     public function canSsh(User $user)
@@ -272,9 +272,9 @@ abstract class Server extends Model implements ProvisionableContract
     /**
      * Delete the model from the database.
      *
-     * @return bool|null
-     *
      * @throws \Exception
+     *
+     * @return bool|null
      */
     public function delete()
     {

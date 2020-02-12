@@ -21,7 +21,8 @@ class DatabaseBackupFinished
     /**
      * Create a new event instance.
      *
-     * @param  \App\DatabaseBackup  $backup
+     * @param \App\DatabaseBackup $backup
+     *
      * @return void
      */
     public function __construct(DatabaseBackup $backup)

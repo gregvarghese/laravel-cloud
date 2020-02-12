@@ -17,7 +17,8 @@ class StartBackgroundServices
     /**
      * Create a new callback instance.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return void
      */
     public function __construct($id)
@@ -28,7 +29,8 @@ class StartBackgroundServices
     /**
      * Handle the callback.
      *
-     * @param  Task  $task
+     * @param Task $task
+     *
      * @return void
      */
     public function handle(Task $task)
@@ -45,7 +47,8 @@ class StartBackgroundServices
     /**
      * Determine if daemons and schedulers should wait to start.
      *
-     * @param  \App\ServerDeployment  $deployment
+     * @param \App\ServerDeployment $deployment
+     *
      * @return bool
      */
     protected function shouldStartBackgroundServices(ServerDeployment $deployment)

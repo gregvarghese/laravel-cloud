@@ -17,7 +17,8 @@ class ValidDatabaseName implements Rule
     /**
      * Create a new rule instance.
      *
-     * @param  \App\Project  $project
+     * @param \App\Project $project
+     *
      * @return void
      */
     public function __construct($project)
@@ -28,8 +29,9 @@ class ValidDatabaseName implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)

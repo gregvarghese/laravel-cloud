@@ -17,7 +17,6 @@ class ActivateJobTest extends TestCase
 {
     use RefreshDatabase;
 
-
     public function setUp()
     {
         parent::setUp();
@@ -25,11 +24,10 @@ class ActivateJobTest extends TestCase
         $this->withoutExceptionHandling();
     }
 
-
     public function test_task_id_is_stored()
     {
         $serverDeployment = factory(ServerDeployment::class)->create();
-        $serverDeployment->setRelation('deployable', $deployable = new ActivateJobTestFakeDeployable);
+        $serverDeployment->setRelation('deployable', $deployable = new ActivateJobTestFakeDeployable());
         $serverDeployment->stack()->environment->update([
             'name' => 'workbench',
         ]);
@@ -48,7 +46,6 @@ class ActivateJobTest extends TestCase
         $this->assertInstanceOf(StartBackgroundServices::class, $deployable->options['then'][1]);
     }
 }
-
 
 class ActivateJobTestFakeDeployable extends AppServer
 {

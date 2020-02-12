@@ -18,8 +18,9 @@ class DeploymentController extends Controller
     /**
      * Get the recent deployments for the given stack.
      *
-     * @param  Request  $request
-     * @param  \App\Stack  $stack
+     * @param Request    $request
+     * @param \App\Stack $stack
+     *
      * @return Response
      */
     public function index(Request $request, Stack $stack)
@@ -32,7 +33,8 @@ class DeploymentController extends Controller
     /**
      * Get the deployment with the given ID.
      *
-     * @param \App\Deployment  $deployment
+     * @param \App\Deployment $deployment
+     *
      * @return Response
      */
     public function show(Deployment $deployment)
@@ -42,14 +44,15 @@ class DeploymentController extends Controller
         return $deployment->load([
             'serverDeployments.deployable',
             'serverDeployments.buildTask',
-            'serverDeployments.activationTask'
+            'serverDeployments.activationTask',
         ]);
     }
 
     /**
      * Create a new deployment for the stack.
      *
-     * @param  \App\Http\Requests\CreateDeploymentRequest  $request
+     * @param \App\Http\Requests\CreateDeploymentRequest $request
+     *
      * @return Response
      */
     public function store(CreateDeploymentRequest $request)
@@ -80,7 +83,8 @@ class DeploymentController extends Controller
     /**
      * Cancel the given deployment.
      *
-     * @param  \App\Deployment  $deployment
+     * @param \App\Deployment $deployment
+     *
      * @return Response
      */
     public function destroy(Deployment $deployment)

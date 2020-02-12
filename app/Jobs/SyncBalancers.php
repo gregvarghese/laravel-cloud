@@ -23,7 +23,8 @@ class SyncBalancers implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Project  $project
+     * @param \App\Project $project
+     *
      * @return void
      */
     public function __construct(Project $project)

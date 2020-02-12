@@ -21,7 +21,8 @@ class DatabaseRestoreFinished
     /**
      * Create a new event instance.
      *
-     * @param  \App\DatabaseRestore  $restore
+     * @param \App\DatabaseRestore $restore
+     *
      * @return void
      */
     public function __construct(DatabaseRestore $restore)

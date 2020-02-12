@@ -12,8 +12,9 @@ class SchedulerController extends Controller
     /**
      * Install the scheduler for the stack.
      *
-     * @param  Request  $request
-     * @param  \App\Stack  $stack
+     * @param Request    $request
+     * @param \App\Stack $stack
+     *
      * @return mixed
      */
     public function store(Request $request, Stack $stack)
@@ -34,8 +35,9 @@ class SchedulerController extends Controller
     /**
      * Remove the scheduler for the stack.
      *
-     * @param  Request  $request
-     * @param  \App\Stack  $stack
+     * @param Request    $request
+     * @param \App\Stack $stack
+     *
      * @return mixed
      */
     public function destroy(Request $request, Stack $stack)

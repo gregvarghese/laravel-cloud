@@ -13,7 +13,8 @@ class LastDeploymentController extends Controller
     /**
      * Cancel the current deployment for the given stack.
      *
-     * @param  \App\Stack  $stack
+     * @param \App\Stack $stack
+     *
      * @return Response
      */
     public function destroy(Stack $stack)

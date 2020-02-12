@@ -10,15 +10,16 @@ class StackTaskController extends Controller
     /**
      * Create a new stack task.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'user' => 'required|string|in:root,cloud',
-            'commands' => 'required|array|min:1',
+            'name'       => 'required|string|max:255',
+            'user'       => 'required|string|in:root,cloud',
+            'commands'   => 'required|array|min:1',
             'commands.*' => 'string',
         ]);
 

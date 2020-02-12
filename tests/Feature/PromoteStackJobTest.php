@@ -7,8 +7,8 @@ use App\Stack;
 use App\AppServer;
 use App\Deployment;
 use Tests\TestCase;
-use App\ServerDeployment;
 use App\Jobs\StopDaemons;
+use App\ServerDeployment;
 use App\Jobs\PromoteStack;
 use App\Jobs\StopScheduler;
 use App\Jobs\RestartDaemons;
@@ -20,14 +20,12 @@ class PromoteStackJobTest extends TestCase
 {
     use RefreshDatabase;
 
-
     public function setUp()
     {
         parent::setUp();
 
         $this->withoutExceptionHandling();
     }
-
 
     public function test_stack_is_promoted_and_proper_jobs_are_dispatched()
     {
@@ -37,13 +35,13 @@ class PromoteStackJobTest extends TestCase
         $previousStack->appServers()->save($previousServer = factory(AppServer::class)->make());
 
         $previousStack->deployments()->save($previousDeployment = factory(Deployment::class)->make([
-            'daemons' => ['first'],
-            'schedule' => ['first']
+            'daemons'  => ['first'],
+            'schedule' => ['first'],
         ]));
 
         $previousDeployment->serverDeployments()->save(
             $previousServerDeployment = factory(ServerDeployment::class)->make([
-                'deployable_id' => $previousServer->id,
+                'deployable_id'   => $previousServer->id,
                 'deployable_type' => get_class($previousServer),
             ])
         );
@@ -52,13 +50,13 @@ class PromoteStackJobTest extends TestCase
         $stack->appServers()->save($server = factory(AppServer::class)->make());
 
         $stack->deployments()->save($deployment = factory(Deployment::class)->make([
-            'daemons' => ['first'],
-            'schedule' => ['first']
+            'daemons'  => ['first'],
+            'schedule' => ['first'],
         ]));
 
         $deployment->serverDeployments()->save(
             $serverDeployment = factory(ServerDeployment::class)->make([
-                'deployable_id' => $server->id,
+                'deployable_id'   => $server->id,
                 'deployable_type' => get_class($server),
             ])
         );
@@ -87,7 +85,6 @@ class PromoteStackJobTest extends TestCase
         });
     }
 
-
     public function test_background_services_arent_started_if_instructed_to_wait()
     {
         Bus::fake();
@@ -95,11 +92,11 @@ class PromoteStackJobTest extends TestCase
         $previousStack = factory(Stack::class)->create(['promoted' => true]);
         $previousStack->appServers()->save($previousServer = factory(AppServer::class)->make());
         $previousStack->deployments()->save($previousDeployment = factory(Deployment::class)->make([
-            'daemons' => ['first']
+            'daemons' => ['first'],
         ]));
         $previousDeployment->serverDeployments()->save(
             $previousServerDeployment = factory(ServerDeployment::class)->make([
-                'deployable_id' => $previousServer->id,
+                'deployable_id'   => $previousServer->id,
                 'deployable_type' => get_class($previousServer),
             ])
         );
@@ -107,12 +104,12 @@ class PromoteStackJobTest extends TestCase
         $stack = factory(Stack::class)->create();
         $stack->appServers()->save($server = factory(AppServer::class)->make());
         $stack->deployments()->save($deployment = factory(Deployment::class)->make([
-            'daemons' => ['first']
+            'daemons' => ['first'],
         ]));
 
         $deployment->serverDeployments()->save(
             $serverDeployment = factory(ServerDeployment::class)->make([
-                'deployable_id' => $server->id,
+                'deployable_id'   => $server->id,
                 'deployable_type' => get_class($server),
             ])
         );
@@ -131,7 +128,6 @@ class PromoteStackJobTest extends TestCase
             return $job->deployment->id === $previousServerDeployment->id;
         });
     }
-
 
     public function test_hooks_are_copied_from_previously_promoted_stack_if_instructed()
     {
@@ -154,7 +150,6 @@ class PromoteStackJobTest extends TestCase
         $this->assertNotEquals($stack->id, $hook->stack_id);
         $this->assertEquals($stack->id, $hook->fresh()->stack_id);
     }
-
 
     public function test_hooks_are_not_copied_from_previously_promoted_stack_if_not_instructed()
     {

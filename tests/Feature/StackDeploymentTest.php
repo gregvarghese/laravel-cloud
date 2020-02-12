@@ -5,8 +5,9 @@ namespace Tests\Feature;
 use App\Stack;
 use App\AppServer;
 use App\Deployment;
-use Tests\TestCase;
 use App\Jobs\Build;
+use Tests\TestCase;
+use Tests\TestCase;
 use App\Jobs\MonitorDeployment;
 use Illuminate\Support\Facades\Bus;
 use App\Jobs\TimeOutDeploymentIfStillRunning;
@@ -16,14 +17,12 @@ class StackDeploymentTest extends TestCase
 {
     use RefreshDatabase;
 
-
     public function setUp()
     {
         parent::setUp();
 
         $this->withoutExceptionHandling();
     }
-
 
     public function test_deploy_dispatches_proper_jobs_and_creates_deployment_record()
     {
@@ -62,7 +61,6 @@ class StackDeploymentTest extends TestCase
         $stack->deploymentLock()->release();
     }
 
-
     public function test_deploy_can_be_performed_by_branch()
     {
         Bus::fake();
@@ -85,7 +83,6 @@ class StackDeploymentTest extends TestCase
 
         $stack->deploymentLock()->release();
     }
-
 
     public function test_previous_deployments_are_trimmed()
     {

@@ -75,9 +75,9 @@ class StackTask extends Model
             }
 
             $this->serverTasks()->create([
-                'taskable_id' => $server->id,
+                'taskable_id'   => $server->id,
                 'taskable_type' => get_class($server),
-                'commands' => $commands,
+                'commands'      => $commands,
             ])->run();
         });
 

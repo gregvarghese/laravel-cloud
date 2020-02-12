@@ -31,8 +31,9 @@ class PromoteStack implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Stack  $stack
-     * @param  array  $options
+     * @param \App\Stack $stack
+     * @param array      $options
+     *
      * @return void
      */
     public function __construct(Stack $stack, array $options = [])
@@ -41,7 +42,7 @@ class PromoteStack implements ShouldQueue
 
         $this->options = array_merge([
             'hooks' => true,
-            'wait' => false,
+            'wait'  => false,
         ], $options);
     }
 

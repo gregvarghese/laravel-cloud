@@ -17,14 +17,12 @@ class ProvisionDatabaseJobTest extends TestCase
 {
     use RefreshDatabase;
 
-
     public function setUp()
     {
         parent::setUp();
 
         $this->withoutExceptionHandling();
     }
-
 
     public function test_databases_is_deleted_on_failure()
     {
@@ -38,7 +36,7 @@ class ProvisionDatabaseJobTest extends TestCase
         }));
 
         $job = new ProvisionDatabase($database);
-        $job->failed(new Exception);
+        $job->failed(new Exception());
 
         Bus::assertDispatched(DeleteServerOnProvider::class);
         $this->assertCount(1, $database->project->alerts);

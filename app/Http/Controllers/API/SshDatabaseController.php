@@ -11,8 +11,9 @@ class SshDatabaseController extends Controller
     /**
      * Get all of the databases for the given project.
      *
-     * @param  Request  $request
-     * @param  Project  $project
+     * @param Request $request
+     * @param Project $project
+     *
      * @return Response
      */
     public function index(Request $request, Project $project)

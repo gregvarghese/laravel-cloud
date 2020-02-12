@@ -23,7 +23,8 @@ abstract class ManipulatesDaemons implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\ServerDeployment  $deployment
+     * @param \App\ServerDeployment $deployment
+     *
      * @return void
      */
     public function __construct(ServerDeployment $deployment)

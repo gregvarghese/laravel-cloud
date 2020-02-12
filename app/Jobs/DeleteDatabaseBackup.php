@@ -30,8 +30,9 @@ class DeleteDatabaseBackup implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\StorageProvider  $provider
-     * @param  string  $backupPath
+     * @param \App\StorageProvider $provider
+     * @param string               $backupPath
+     *
      * @return void
      */
     public function __construct(StorageProvider $provider, $backupPath)

@@ -110,13 +110,14 @@ trait Provisionable
     /**
      * Set the SSH key attributes on the model.
      *
-     * @param  object  $value
+     * @param object $value
+     *
      * @return void
      */
     public function setKeypairAttribute($value)
     {
         $this->attributes = [
-            'public_key' => $value->publicKey,
+            'public_key'  => $value->publicKey,
             'private_key' => $value->privateKey,
         ] + $this->attributes;
     }
@@ -133,11 +134,11 @@ trait Provisionable
         }
 
         $canAccess = $this->fresh()->ipAddress() && $this->run(
-            new GetCurrentDirectory
+            new GetCurrentDirectory()
         )->output == '/root';
 
         if ($canAccess) {
-            $apt = $this->run(new GetAptLockStatus);
+            $apt = $this->run(new GetAptLockStatus());
         } else {
             return false;
         }
@@ -155,7 +156,7 @@ trait Provisionable
     {
         $project = $this->project;
 
-        list($publicIp, $privateIp) = [
+        [$publicIp, $privateIp] = [
             $project->withProvider()->getPublicIpAddress($this),
             $project->withProvider()->getPrivateIpAddress($this),
         ];
@@ -165,7 +166,7 @@ trait Provisionable
         }
 
         $this->address()->create([
-            'public_address' => $publicIp,
+            'public_address'  => $publicIp,
             'private_address' => $privateIp,
         ]);
     }
@@ -223,8 +224,9 @@ trait Provisionable
     /**
      * Run the given script on the server.
      *
-     * @param  \App\Scripts\Script  $script
-     * @param  array  $options
+     * @param \App\Scripts\Script $script
+     * @param array               $options
+     *
      * @return Task
      */
     public function run(Script $script, array $options = [])
@@ -235,19 +237,20 @@ trait Provisionable
 
         return $this->tasks()->create([
             'project_id' => $this->projectId(),
-            'name' => $script->name(),
-            'user' => $script->sshAs,
-            'options' => $options,
-            'script' => (string) $script,
-            'output' => '',
+            'name'       => $script->name(),
+            'user'       => $script->sshAs,
+            'options'    => $options,
+            'script'     => (string) $script,
+            'output'     => '',
         ])->run();
     }
 
     /**
      * Run the given script in the background the server.
      *
-     * @param  \App\Scripts\Script  $script
-     * @param  array  $options
+     * @param \App\Scripts\Script $script
+     * @param array               $options
+     *
      * @return Task
      */
     public function runInBackground(Script $script, array $options = [])

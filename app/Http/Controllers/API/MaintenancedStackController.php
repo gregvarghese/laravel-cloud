@@ -12,7 +12,8 @@ class MaintenancedStackController extends Controller
     /**
      * Place a stack under maintenance.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return mixed
      */
     public function store(Request $request)
@@ -31,7 +32,8 @@ class MaintenancedStackController extends Controller
     /**
      * Remove the given stack from maintenance mode.
      *
-     * @param  \App\Stack  $stack
+     * @param \App\Stack $stack
+     *
      * @return Response
      */
     public function destroy(Stack $stack)

@@ -24,7 +24,8 @@ class SyncServer implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Server  $server
+     * @param \App\Server $server
+     *
      * @return void
      */
     public function __construct(Server $server)

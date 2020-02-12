@@ -68,7 +68,8 @@ class ServerProvisioner implements ShouldQueue
     /**
      * Handle a job failure.
      *
-     * @param  \Exception  $exception
+     * @param \Exception $exception
+     *
      * @return void
      */
     public function failed(Exception $exception)
@@ -80,9 +81,9 @@ class ServerProvisioner implements ShouldQueue
         }
 
         $this->provisionable->project->alerts()->create([
-            'type' => 'ServerProvisioningFailed',
+            'type'      => 'ServerProvisioningFailed',
             'exception' => (string) $exception,
-            'meta' => [],
+            'meta'      => [],
         ]);
     }
 }

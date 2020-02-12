@@ -23,8 +23,9 @@ class ServerRecordCreator
     /**
      * Create a new stack server creator instance.
      *
-     * @param  \App\Stack  $stack
-     * @param  \App\Contracts\StackDefinition  $definition
+     * @param \App\Stack                     $stack
+     * @param \App\Contracts\StackDefinition $definition
+     *
      * @return void
      */
     public function __construct(Stack $stack, StackDefinition $definition)
@@ -57,20 +58,21 @@ class ServerRecordCreator
     /**
      * Get the base server attributes for the given definition.
      *
-     * @param  int  $index
-     * @param  array  $definition
+     * @param int   $index
+     * @param array $definition
+     *
      * @return array
      */
     protected function baseAttributes($index, array $definition)
     {
         return [
-            'project_id' => $this->stack->environment->project->id,
-            'name' => "{$this->stack->name}-{$this->type}-{$index}",
-            'size' => $definition['size'],
+            'project_id'    => $this->stack->environment->project->id,
+            'name'          => "{$this->stack->name}-{$this->type}-{$index}",
+            'size'          => $definition['size'],
             'sudo_password' => str_random(40),
-            'meta' => array_filter([
+            'meta'          => array_filter([
                 'serves' => $definition['serves'] ?? null,
-                'tls' => $definition['tls'] ?? null,
+                'tls'    => $definition['tls'] ?? null,
             ]),
         ];
     }

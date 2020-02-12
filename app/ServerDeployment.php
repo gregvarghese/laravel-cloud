@@ -24,7 +24,7 @@ class ServerDeployment extends Model
      * @var array
      */
     protected $casts = [
-        'build_commands' => 'json',
+        'build_commands'      => 'json',
         'activation_commands' => 'json',
     ];
 

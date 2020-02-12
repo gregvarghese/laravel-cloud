@@ -30,8 +30,9 @@ class FinishTask implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Task  $task
-     * @param  int  $exitCode
+     * @param \App\Task $task
+     * @param int       $exitCode
+     *
      * @return void
      */
     public function __construct(Task $task, $exitCode = 0)

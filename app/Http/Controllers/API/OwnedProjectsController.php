@@ -10,7 +10,8 @@ class OwnedProjectsController extends Controller
     /**
      * Get all of the owned projects for the current user.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return Response
      */
     public function index(Request $request)

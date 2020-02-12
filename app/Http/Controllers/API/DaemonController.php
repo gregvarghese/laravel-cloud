@@ -12,8 +12,9 @@ class DaemonController extends Controller
     /**
      * Update the daemon states for the stack.
      *
-     * @param  Request  $request
-     * @param  \App\Stack  $stack
+     * @param Request    $request
+     * @param \App\Stack $stack
+     *
      * @return mixed
      */
     public function update(Request $request, Stack $stack)
@@ -21,7 +22,7 @@ class DaemonController extends Controller
         $this->authorize('view', $stack->project());
 
         $request->validate([
-            'action' => 'required|string|in:start,restart,pause,continue,unpause'
+            'action' => 'required|string|in:start,restart,pause,continue,unpause',
         ]);
 
         if (! $deployment = $stack->lastDeployment()) {
